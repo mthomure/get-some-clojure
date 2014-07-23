@@ -1,3 +1,16 @@
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(prelude-require-packages
+ '(cider
+   better-defaults
+   paredit))
+
+;; disable spell-checking
+(setq prelude-flyspell nil)
+
+;(require 'cider-eldoc)
+
 ;; swap option/command keys
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
@@ -20,13 +33,13 @@
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
 ;; eldoc in clojore buffers
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 ;; paredit in repl
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
+;(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;; cider configs
-(setq cider-repl-history-file "~/.cider-repl-history")
+;(setq cider-repl-history-file "~/.cider-repl-history")
 
 ;; disable bell
 (setq ring-bell-function 'ignore)
@@ -34,11 +47,3 @@
 ;; make mouse scrolling less jumpy
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-
-(defvar my-packages
-  '(better-defaults
-    midje-mode))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
