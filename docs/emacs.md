@@ -12,8 +12,10 @@
 | `M-q` | reflow paragraph (aka justify or fill)
 | `M-w` | copy
 | `C-/` | undo
+| `C-?` | redo (using undo-tree)
 | `M-h` | select paragraph
 | `M-;` | toggle comment
+| `M-:` | evaluate elisp expression
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Moving-Point.html
 

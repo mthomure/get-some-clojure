@@ -9,8 +9,6 @@
 ;; disable spell-checking
 (setq prelude-flyspell nil)
 
-;(require 'cider-eldoc)
-
 ;; swap option/command keys
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
@@ -39,7 +37,7 @@
 ;(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;; cider configs
-;(setq cider-repl-history-file "~/.cider-repl-history")
+(setq cider-repl-history-file "~/.cider-repl-history")
 
 ;; disable bell
 (setq ring-bell-function 'ignore)
@@ -47,3 +45,6 @@
 ;; make mouse scrolling less jumpy
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+
+;; allow arrow keys, too
+(setq prelude-guru nil)

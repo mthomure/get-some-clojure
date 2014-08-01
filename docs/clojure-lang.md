@@ -5,6 +5,8 @@
 
 ## basic syntax
 
+see also: http://clojure.org/reader
+
 | Expression | Meaning |
 |------------|---------|
 | `{}`           | map
@@ -80,7 +82,8 @@ A var is printed as `#'NAME`
 => '(1 2 3)
 ```
 
-`vector` - contiguous block of cells. Note that a quoted vector is equivalent to a vector of quoted elements. Lists and vectors are comparable.
+`vector` - contiguous block of cells. Note that a quoted vector is equivalent to
+a vector of quoted elements. Lists and vectors are comparable.
 ```
 => [1 2 3]
 => (vector 1 2 3)
@@ -98,6 +101,9 @@ A var is printed as `#'NAME`
 => {1 11, 2 22}
 => {:a 11, :b 22}
 ```
+
+a clojure `seq` is an interface over a collection of elements, similar to java's
+`Iterable`, or python's `__iter__`.
 
 ## declaring functions
 
@@ -214,3 +220,5 @@ Notice that arguments are *not* quoted in this case.
 * protocols
 * reify
 * gen-class
+
+[example using reflection](http://stackoverflow.com/questions/5821286/how-can-i-get-the-methods-of-a-java-class-from-clojure/5821658#5821658)

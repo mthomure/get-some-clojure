@@ -57,7 +57,8 @@ python has a (mutable) mapping called `dict`, which is similar to clojure's (imm
 
 | Python                      | Clojure | Description
 |-----------------------------|---------|------------
-| {'a':1, 'b':2}              | {:a 1 :b 2}  | create a set
+| {'a':1, 'b':2}              | {:a 1 :b 2}  | create a hash map
+|                             | (hash-map :a 1 :b 2) |
 | dict([[1,11], [2,22]])      | (into {} [[1 11] [2 22]])  | create mapping from sequence of (key,value) pairs
 | dict_[key]                  | (get dict_ key)  | access value by key
 |                             | (dict_ key)  | (use mapping as function) |

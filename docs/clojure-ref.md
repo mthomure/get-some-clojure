@@ -59,6 +59,40 @@
 | take-last | yield last N elements of seq
 | take-while | yield elements until condition fails
 
+## flambo api
+
+basic functions in `flambo.api`
+
+| function | description |
+|----------|-------------|
+| parallelize | scatter a collection across nodes
+| text-file | read data from disk
+| defsparkfn | create named function
+| fn | create anonymous function
+| map | apply parallel map
+| reduce | apply parallel reduction
+| collect | gather a collection
+| take | gather the head of a collection
+
+https://github.com/yieldbot/flambo
+
+## code snippets
+
+list files in a directory (recursively)
+```
+(file-seq (clojure.java.io/file "/path/to/directory"))
+```
+
+get lines of a text file (could be a URL)
+```
+(with-open [rdr (clojure.java.io/reader "/tmp/foo.txt")]
+  (doall (line-seq rdr)))
+```
+raise an exception
+```
+(throw (Exception. "my message"))
+```
+
 ## debugging
 
 ```
@@ -111,6 +145,12 @@ for java reflection:
 
 http://stackoverflow.com/questions/5821286/how-can-i-get-the-methods-of-a-java-class-from-clojure/5821658#5821658
 
+print the definition of a function:
+```
+(clojure.repl/source f)
+```
+
+
 ## testing
 
 ```
@@ -119,11 +159,24 @@ http://stackoverflow.com/questions/5821286/how-can-i-get-the-methods-of-a-java-c
 
 ## libraries
 
+* core libraries
+
+  * clojure.string
+  * clojure.java.io
+  * clojure.java.shell
+
+
 * [midje](https://github.com/marick/Midje) - unit testing library for clojure
 
-  [lein-midje](https://github.com/marick/lein-midje) - leiningen integration. see `lein midje :autotest`
+  * [lein-midje](https://github.com/marick/lein-midje) - leiningen integration. see `lein midje :autotest`
+  * to automatically retest a set of files, use
+  `(autotest :files "test/lich/file1_test.clj")`
+
 
 * pallet/thread-expr - extended threading macros
+
+* [jackknife](https://github.com/sritchie/jackknife) - general-purpose clojure utilities. see also `slurm` (internal project)
+
 
 ## tooling
 
