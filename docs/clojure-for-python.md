@@ -70,6 +70,7 @@ python has a (mutable) mapping called `dict`, which is similar to clojure's (imm
 | dict_.items()               | (seq dict_) | (key,value) pairs
 | dict_.keys()                | (keys dict_) | just the keys
 | dict_.values()              | (vals dict_) | just the values
+| `for k,v in dict_.items():` &nbsp;&nbsp;`dict_[k] = f(v)` | `(into {} (for [[k v] dict_] [k (f v)]))` | apply function to values of a map
 
 ## set
 
@@ -82,6 +83,7 @@ python and clojure both have a `set` data structure.
 | {1, 2} - {1}                | (disj #{1 2} 1)  | new set with element removed
 | el in set_                  | (contains? set_ el)  | search for element
 |                             | (set_ el)  | (search, but return el if found, else nil)
+| set_.add(el)                | (conj set_ el)  | add element to set
 
 ## iterables
 

@@ -17,6 +17,11 @@
 | `M-;` | toggle comment
 | `M-:` | evaluate elisp expression
 
+wrap long lines at 80 columns:
+```
+(set-fill-column 80)
+```
+
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Moving-Point.html
 
 ## paredit shortcuts for emacs
@@ -54,7 +59,12 @@ http://mumble.net/~campbell/emacs/paredit.html
 | `C-M-f` | move to closing paren
 | `C-M-b` | move to opening paren
 | `C-c ,` | evaluate midje fact (midje mode)
+| `*1` | last result in repl
 
 in repl, type `,` (comma) as first character in line to bring up command dialog.
 
 when inspecting an object, use `Tab`/`Shift-Tab` and `Return` to navigate sub-objects, and `l` (ell) to navigate to the parent object.
+
+disable popup on clojure error: eval `(setq cider-show-error-buffer nil)` with `M-:`.
+
+pretty-print helper: `(defn pp ([x] (clojure.pprint/pprint x)) ([] (pp *1)))`

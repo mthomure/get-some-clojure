@@ -44,6 +44,7 @@
 | rand | generate pseudo-random number (between zero and one?)
 | range | numbers in an interval
 | reduce | iteratively apply function to first two elements of list, replacing them with the result
+| reduce-kv | apply a reduction to a mapping
 | reductions | like reduce, but yield partials. e.g., this can give cumulative sums
 | remove | yield elements of seq not matching condition (complement of filter)
 | repeat | infinite repetitions of value
@@ -52,6 +53,7 @@
 | rest | tail of collection, or empty list on single-element input
 | reverse | get seq in reversed order
 | second | element by offset
+| select-keys | extract portion of a map
 | shuffle | randomize order of seq
 | split-at | break seq in two
 | split-with | break seq in two, using a function to decide when to split
@@ -83,15 +85,26 @@ list files in a directory (recursively)
 (file-seq (clojure.java.io/file "/path/to/directory"))
 ```
 
-get lines of a text file (could be a URL)
+read lines of a text file (could be a URL)
 ```
 (with-open [rdr (clojure.java.io/reader "/tmp/foo.txt")]
   (doall (line-seq rdr)))
 ```
+
+write lines to a text file
+```
+(with-open [wrt (clojure.java.io/writer "tmp/foo.txt")]
+  (doseq [line all-lines]
+    (.write wrt line)))
+```
+
 raise an exception
 ```
 (throw (Exception. "my message"))
 ```
+
+http://nakkaya.com/2010/06/15/clojure-io-cookbook/
+http://stackoverflow.com/questions/7756909/in-clojure-1-3-how-to-read-and-write-a-file
 
 ## debugging
 
@@ -170,7 +183,7 @@ print the definition of a function:
 
   * [lein-midje](https://github.com/marick/lein-midje) - leiningen integration. see `lein midje :autotest`
   * to automatically retest a set of files, use
-  `(autotest :files "test/lich/file1_test.clj")`
+  `(autotest :files "src/clj/lich" "test/lich/file1_test.clj")`
 
 
 * pallet/thread-expr - extended threading macros

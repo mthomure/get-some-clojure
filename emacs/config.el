@@ -4,7 +4,14 @@
 (prelude-require-packages
  '(cider
    better-defaults
-   paredit))
+   paredit
+   ))
+
+;; work-around for bug in emacs 24.3
+(setq save-interprogram-paste-before-kill nil)
+
+;; wrap long lines at 80 characters
+(set-fill-column 80)
 
 ;; disable spell-checking
 (setq prelude-flyspell nil)
@@ -30,12 +37,6 @@
 ;; comment-or-uncomment-region
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
-;; eldoc in clojore buffers
-;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-
-;; paredit in repl
-;(add-hook 'cider-repl-mode-hook 'paredit-mode)
-
 ;; cider configs
 (setq cider-repl-history-file "~/.cider-repl-history")
 
@@ -48,3 +49,16 @@
 
 ;; allow arrow keys, too
 (setq prelude-guru nil)
+
+;; disable stack trace on error
+(setq cider-show-error-buffer nil)
+
+;; completely disable graphical dialog boxes (broken in OS X)
+(defadvice yes-or-no-p (around prevent-dialog activate)
+  "Prevent yes-or-no-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
+(defadvice y-or-n-p (around prevent-dialog-yorn activate)
+  "Prevent y-or-n-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
